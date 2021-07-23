@@ -3,64 +3,68 @@
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <style> rect {fill: lightblue; stroke: black; }</style>
 <body>
-<svg width=1500 height=1500>
-</svg>
+<svg width=1500 height=1500 id="svg1"></svg>
 <script>
-// async function init() {
-// data = await d3.csv("https://flunky.github.io/cars2017.csv");
-var data1 = [4,8,15,16,23,42];
-var margin = 50;
-var x = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,200]);
-var y = d3.scaleLinear().domain([0,42]).range([200,0]);
-var h = d3.scaleLinear().domain([0,42]).range([0,200]);
-var w = x.bandwidth()
-// var xs = d3.scaleLog().base(10).domain([10,150]).range([0,200]);
-// var ys = d3.scaleLog().base(10).domain([10,150]).range([200,0]);
+async function init() {
+data2 = await d3.csv("https://flunky.github.io/cars2017.csv");
+// var data1 = [4,8,15,16,23,42];
+// var margin = 50;
+// var x = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,200]);
+// var y = d3.scaleLinear().domain([0,42]).range([200,0]);
+// var h = d3.scaleLinear().domain([0,42]).range([0,200]);
+// var w = x.bandwidth()
+var xs = d3.scaleLog().base(10).domain([10,150]).range([0,200]);
+var ys = d3.scaleLog().base(10).domain([10,150]).range([200,0]);
 
 
 d3.select('svg')
     .append('g')
-    .attr('transform','translate(50,50)')
+    .attr('transform','translate(400,50)')
     .selectAll('rect')
     .data(data1)
     .enter()
     .append('rect')
     .attr('x',function(d,i) {return x(i);})
-    .attr('y',function(d,i) {return y(d);}).attr('width',w).attr('height',function(d,i) {return h(d);})
+    .attr('y',function(d,i) {return y(d);})
+    .attr('width',w)
+    .attr('height',function(d,i) {return h(d);})
 
 d3.select('svg')
     .append('g')
-    .attr('transform','translate(50,50)')
+    .attr('transform','translate(400,50)')
     .call(d3.axisLeft(y));
-d3.select('svg')
+d3.select('#svg1')
     .append('g')
-    .attr('transform','translate(50,250)')
+    .attr('transform','translate(400,250)')
     .call(d3.axisBottom(x));
 
 
-// d3.select('svg')
+// d3.select('#svg2')
 //     .append('g')
-//     .attr('transform','translate("+margin+", "+margin+")')
-//     .selectAll('circle').data(data).enter().append('circle')
+//     .attr('transform','translate(50, 50)')
+//     .selectAll('circle')
+//     .data(data2)
+//     .enter()
+//     .append('circle')
 //     .attr('cx',function(d,i) {return xscale(d.AverageCityMPG);})
 //     .attr('cy',function(d,i) {return yscale(d.AverageHighwayMPG);})
 //     .attr('r',function(d) {return (parseInt(d.EngineCylinders)+2);});
-// d3.select('svg')
+// d3.select('#svg2')
 //     .append('g')
-//     .attr('transform','translate("+margin+", "+margin+")')
+//     .attr('transform','translate(50,50)')
 //     .call(
-//         d3.axisLeft(yscale)
+//         d3.axisLeft(ys)
 //         .tickValues([10,20,50,100])
 //         .tickFormat(d3.format("~s")));
-// d3.select('svg')
+// d3.select('#svg2')
 //     .append('g')
-//     .attr('transform','translate("+margin+", "+(200 + margin)+")')
+//     .attr('transform','translate(50, 250)')
 //     .call(
-//         d3.axisBottom(xscale)
+//         d3.axisBottom(xs)
 //         .tickValues([10,20,50,100])
 //         .tickFormat(d3.format("~s")));
 
-// }
+}
 
 
 </script>
