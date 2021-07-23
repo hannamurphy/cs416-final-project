@@ -17,13 +17,47 @@ var xs = d3.scaleLog().base(10).domain([10,150]).range([0,200]);
 var ys = d3.scaleLog().base(10).domain([10,150]).range([200,0]);
 
 
-d3.select('svg').append('g').attr('transform','translate("+margin+", "+margin+")')
-.selectAll('circle').data(data).enter().append('circle')
-.attr('cx',function(d,i) {return xscale(d.AverageCityMPG);})
-.attr('cy',function(d,i) {return yscale(d.AverageHighwayMPG);})
-.attr('r',function(d) {return (parseInt(d.EngineCylinders)+2);});
-d3.select('svg').append('g').attr('transform','translate("+margin+", "+margin+")').call(d3.axisLeft(yscale).tickValues([10,20,50,100]).tickFormat(d3.format("~s")));
-d3.select('svg').append('g').attr('transform','translate("+margin+", "+(200 + margin)+")').call(d3.axisBottom(xscale).tickValues([10,20,50,100]).tickFormat(d3.format("~s")));
+d3.select('svg')
+    .append('g')
+    .attr('transform','translate("+(200 + margin)+","+margin+")')
+    .selectAll('rect')
+    .data(data)
+    .enter()
+    .append('rect')
+    .attr('x',function(d,i) {return x(i);})
+    .attr('y',function(d,i) {return y(d);}).attr('width',w).attr('height',function(d,i) {return h(d);})
+
+d3.select('svg')
+    .append('g')
+    .attr('transform','translate("+(200 + margin)+","+margin+")')
+    .call(d3.axisLeft(y));
+d3.select('svg')
+    .append('g')
+    .attr('transform','translate("+(200 + margin)+","+margin+")')
+    .call(d3.axisBottom(x));
+
+
+d3.select('svg')
+    .append('g')
+    .attr('transform','translate("+margin+", "+margin+")')
+    .selectAll('circle').data(data).enter().append('circle')
+    .attr('cx',function(d,i) {return xscale(d.AverageCityMPG);})
+    .attr('cy',function(d,i) {return yscale(d.AverageHighwayMPG);})
+    .attr('r',function(d) {return (parseInt(d.EngineCylinders)+2);});
+d3.select('svg')
+    .append('g')
+    .attr('transform','translate("+margin+", "+margin+")')
+    .call(
+        d3.axisLeft(yscale)
+        .tickValues([10,20,50,100])
+        .tickFormat(d3.format("~s")));
+d3.select('svg')
+    .append('g')
+    .attr('transform','translate("+margin+", "+(200 + margin)+")')
+    .call(
+        d3.axisBottom(xscale)
+        .tickValues([10,20,50,100])
+        .tickFormat(d3.format("~s")));
 
 }
 
