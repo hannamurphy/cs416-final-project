@@ -16,20 +16,24 @@
 // data = await d3.csv("https://github.com/hannamurphy/cs416-final-project/blob/main/sampledata.csv");
     //pet_characteristics.csv");
 var data = [4,8,15,16,23,42];
-// var x = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,200]);
-// var y = d3.scaleLinear().domain([0,42]).range([200,0]);
-// var h = d3.scaleLinear().domain([0,42]).range([0,200]);
-// var w = x.bandwidth()
-// var wg = d3.map(data, function(d){return(d.name)}).keys()
+var x = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,200]);
+var y = d3.scaleLinear().domain([0,42]).range([200,0]);
+var h = d3.scaleLinear().domain([0,42]).range([0,200]);
+var w = x.bandwidth()
 
 //working group drop down
+d3.select("body")
+    .append("div")
+    .attr('transform','translate(50,50)')
+    .style("border", "1px black solid")
+    .text("hello world");
 d3.select("select")
     .selectAll('groups')
     .data(data)
     .enter()
     .append('option')
     .style("left", "50px")
-    .style("top", "50px")
+    .style("top", "75px")
     .text(function (d) { return d; })
 
 
@@ -50,7 +54,7 @@ d3.select('svg')
     .append('g')
     .attr('transform','translate(400,50)')
     .call(d3.axisLeft(y));
-d3.select('#svg1')
+d3.select('svg')
     .append('g')
     .attr('transform','translate(400,250)')
     .call(d3.axisBottom(x));
