@@ -1,19 +1,37 @@
 <html>
 <h1>DATA VISUALIZATION FINAL PROJECT</h1>
 <script src='https://d3js.org/d3.v5.min.js'></script>
-<style> rect {fill: lightblue; stroke: black; }</style>
+<style>
+    rect {fill: lightblue; stroke: black; }
+    select { position: absolute; left: 50px; top: 100px; }
+</style>
+<select id="selectButton">
+    <option>All working groups</option>
+</select>
 <body>
-<svg width=1500 height=1500 id="svg1"></svg>
+<svg width=1500 height=1500 ></svg>
 <script>
-async function init() {
-data = await d3.csv("https://github.com/hannamurphy/cs416-final-project/blob/main/sampledata.csv");
-// var data = [4,8,15,16,23,42];
-var x = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,200]);
-var y = d3.scaleLinear().domain([0,42]).range([200,0]);
-var h = d3.scaleLinear().domain([0,42]).range([0,200]);
-var w = x.bandwidth()
-// var xs = d3.scaleLog().base(10).domain([10,150]).range([0,200]);
-// var ys = d3.scaleLog().base(10).domain([10,150]).range([200,0]);
+// async function init() {
+// d3.csv("https://github.com/hannamurphy/cs416-final-project/blob/main/sampledata.csv", function(data) {
+// data = await d3.csv("https://github.com/hannamurphy/cs416-final-project/blob/main/sampledata.csv");
+    //pet_characteristics.csv");
+var data = [4,8,15,16,23,42];
+// var x = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,200]);
+// var y = d3.scaleLinear().domain([0,42]).range([200,0]);
+// var h = d3.scaleLinear().domain([0,42]).range([0,200]);
+// var w = x.bandwidth()
+// var wg = d3.map(data, function(d){return(d.name)}).keys()
+
+//working group drop down
+d3.select("select")
+    .selectAll('groups')
+    .data(data)
+    .enter()
+    .append('option')
+    .style("left", "50px")
+    .style("top", "50px")
+    .text(function (d) { return d; })
+
 
 
 d3.select('svg')
@@ -37,33 +55,7 @@ d3.select('#svg1')
     .attr('transform','translate(400,250)')
     .call(d3.axisBottom(x));
 
-
-// d3.select('#svg2')
-//     .append('g')
-//     .attr('transform','translate(50, 50)')
-//     .selectAll('circle')
-//     .data(data2)
-//     .enter()
-//     .append('circle')
-//     .attr('cx',function(d,i) {return xscale(d.AverageCityMPG);})
-//     .attr('cy',function(d,i) {return yscale(d.AverageHighwayMPG);})
-//     .attr('r',function(d) {return (parseInt(d.EngineCylinders)+2);});
-// d3.select('#svg2')
-//     .append('g')
-//     .attr('transform','translate(50,50)')
-//     .call(
-//         d3.axisLeft(ys)
-//         .tickValues([10,20,50,100])
-//         .tickFormat(d3.format("~s")));
-// d3.select('#svg2')
-//     .append('g')
-//     .attr('transform','translate(50, 250)')
-//     .call(
-//         d3.axisBottom(xs)
-//         .tickValues([10,20,50,100])
-//         .tickFormat(d3.format("~s")));
-
-}
+// }
 
 
 </script>
