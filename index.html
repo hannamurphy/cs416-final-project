@@ -30,7 +30,7 @@ data = await d3.csv("pet_characteristics.csv");
 var x = d3.scaleOrdinal(data.map(function(d) { return d.BreedName; }),[0, 350]);
 var y = d3.scaleLinear().domain([0,42]).range([200,0]);
 var h = d3.scaleLinear().domain([0,42]).range([0,200]);
-var w = x.bandwidth()
+var w = x.bandwidth();
 
 for (var i = 0; i < data.length; i++) {
     console.log(data[i].BreedName);
@@ -79,7 +79,7 @@ d3.select('svg')
     .append('rect')
     .attr("x", function(d) { return x(d.BreedName); })
     .attr('y',function(d) {return y(d.MaleWtKg);})
-    .attr('width', x.rangeBand())
+    .attr('width', w)
     .attr('height',function(d) {return h(d.MaleWtKg);})
     // .on("mouseover",mouseover)
     // .on("mousemove",mousemove)
