@@ -27,14 +27,13 @@
 async function init() {
 data = await d3.csv("pet_characteristics.csv");
 // var data2 = [4,8,15,16,23,42];
-var x = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,200]);
+var x = d3.scaleOrdinal().rangeRoundBands([0, 350], .1);
 var y = d3.scaleLinear().domain([0,42]).range([200,0]);
 var h = d3.scaleLinear().domain([0,42]).range([0,200]);
 var w = x.bandwidth()
 
 for (var i = 0; i < data.length; i++) {
     console.log(data[i].BreedName);
-    console.log(data[i].Group1);
 }
 
 // working group drop down
