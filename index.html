@@ -58,23 +58,23 @@ d3.select('select')
     .append('option')
     .text(function (d) { return d; })
     .property("selected", function(d){ return d === 'PopularityUS2017'; }); //set default stat to popularity
-// d3.select("#stats").on("change", function() {
-//   update(this.value);
-// });
-// function update(value) {
-//   var updt = svg.selectAll("rect")
-//     .data(data)
-//
-//   updt.enter()
-//     .append("rect")
-//     .merge(updt)
-//     .transition()
-//     .duration(1000)
-//     .attr("x", function(d) { return x(d.BreedName); })
-//     .attr('y',function(d) {return y(d.value);})
-//       .attr("width", x.bandwidth())
-//       .attr("height", function(d) { return height - y(d.value); })
-// }
+d3.select("#stats").on("change", function() {
+  update(this.value);
+});
+function update(value) {
+  var updt = svg.selectAll("rect")
+    .data(data)
+
+  updt.enter()
+    .append("rect")
+    .merge(updt)
+    .transition()
+    .duration(1000)
+    .attr("x", function(d) { return x(d.BreedName); })
+    .attr('y',function(d) {return y(d.value);})
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height - y(d.value); })
+}
 
 //tooltip
 var tooltip = d3.select("body")
