@@ -41,7 +41,7 @@ async function init() {
 data = await d3.csv("pet_characteristics.csv");
 var x = d3.scaleBand().rangeRound([0, 5000]).padding(.1).domain(data.map(function(d) { return d.BreedName; }))
 var y = d3.scaleLinear().range([500,0]).domain([0, d3.max(data, function(d) { return d.MaleWtKg; })]);
-var h = d3.scaleLinear().domain([0,1500]).range([0,500]);
+var h = d3.scaleLinear().domain([0, d3.max(data, function(d) { return d.MaleWtKg; })]).range([0,500]);
 var w = x.bandwidth();
 
 for (var i = 0; i < data.length; i++) {
@@ -94,7 +94,7 @@ d3.select('svg')
     .attr("x", function(d) { return x(d.BreedName); })
     .attr('y',function(d) {return y(d.MaleWtKg);})
     .attr('width', w)
-    .attr('height',function(d,i) {return h(d);})
+    .attr('height',function(d,i) {return h(d.MaleWtKg);})
     ;
     // .append('title')
     // .text((d) => `Average male weight in kg for ${d.BreedName} is ${d.MaleWtKg}`);
