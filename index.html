@@ -1,10 +1,10 @@
 <html>
+<script src='https://d3js.org/d3.v5.min.js'></script>
 <h1>Dog Breed Statistics</h1>
 <h3>What dog breed is right for you?</h3>
 <hr>
 <p class="wg">Working Groups</p>
 <p class="slide">Slides</p>
-<script src='https://d3js.org/d3.v5.min.js'></script>
 <style>
     rect {fill: lightblue; stroke: black; }
     p.wg { position: absolute; left: 150px; top: 150px; }
@@ -24,24 +24,47 @@
 <body>
 <svg width=1500 height=1500 ></svg>
 <script>
-// async function init() {
-// d3.csv("https://github.com/hannamurphy/cs416-final-project/blob/main/sampledata.csv", function(data) {
-// data = await d3.csv("https://github.com/hannamurphy/cs416-final-project/blob/main/sampledata.csv");
+async function init() {
+data = await d3.csv("~/UIUC-MCSDS/cs416-final-project/sampledata.csv");
     //pet_characteristics.csv");
-var data = [4,8,15,16,23,42];
+// var data = [4,8,15,16,23,42];
 var x = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,200]);
 var y = d3.scaleLinear().domain([0,42]).range([200,0]);
 var h = d3.scaleLinear().domain([0,42]).range([0,200]);
 var w = x.bandwidth()
 
-//working group drop down
-d3.select("select")
+// working group drop down
+d3.select('select')
     .selectAll('groups')
     .data(data)
     .enter()
     .append('option')
     .text(function (d) { return d; })
 
+//tooltip
+var tooltip = d3.select('svg')
+    .append('div')
+    .style('opacity', 0)
+    .attr('class', 'tooltip')
+    .style('background-color', 'white')
+    .style('border', 'solid')
+    .style('border-width', '1px')
+    .style('border-radius', '5px')
+    .style('padding', '10px')
+var mouseover = function(d) {
+    tooltip.style("opacity", 1)
+  }
+var mousemove = function(d,i) {
+    tooltip
+      .html("this is a tooltip")
+      .style("left", (d3.mouse(this)[0]+90) + "px")
+      .style("top", (d3.mouse(this)[1]+90) + "px")
+  }
+var mouseleave = function(d) {
+    tooltip.transition()
+      .duration(200)
+      .style("opacity", 0)
+  }
 
 
 d3.select('svg')
@@ -55,6 +78,9 @@ d3.select('svg')
     .attr('y',function(d,i) {return y(d);})
     .attr('width',w)
     .attr('height',function(d,i) {return h(d);})
+    .on("mouseover",mouseover)
+    .on("mousemove",mousemove)
+    .on("mouseleave",mouseleave)
 
 d3.select('svg')
     .append('g')
@@ -65,8 +91,8 @@ d3.select('svg')
     .attr('transform','translate(350,275)')
     .call(d3.axisBottom(x));
 
-// }
-
+}
+init()
 
 </script>
 </body>
