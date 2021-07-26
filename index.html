@@ -50,14 +50,14 @@ for (var i = 0; i < data.length; i++) {
 
 // stats drop down
 var stats = ['MaleWtKg','Intelligence','PopularityUS2017']
-// d3.select('select')
-//     .selectAll('groups')
-//     .data(stats)
-//         // d3.map(data, function(d){ return d.Group1; }).keys())
-//     .enter()
-//     .append('option')
-//     .text(function (d) { return d; })
-//     .property("selected", function(d){ return d === 'PopularityUS2017'; }); //set default stat to popularity
+d3.select('select')
+    .selectAll('groups')
+    .data(stats)
+        // d3.map(data, function(d){ return d.Group1; }).keys())
+    .enter()
+    .append('option')
+    .text(function (d) { return d; })
+    .property("selected", function(d){ return d === 'PopularityUS2017'; }); //set default stat to popularity
 // d3.select("#stats").on("change", function() {
 //   update(this.value);
 // });
