@@ -93,8 +93,8 @@ d3.select('svg')
     .append('rect')
     .attr("x", function(d) { return x(d.BreedName); })
     .attr('y',function(d) {return y(d.MaleWtKg);})
-    // .attr('width', w)
-    // .attr('height',function(d) {return h(d.MaleWtKg);})
+    .attr('width', w)
+    .attr('height',function(d) {return h(d.MaleWtKg);})
     ;
     // .append('title')
     // .text((d) => `Average male weight in kg for ${d.BreedName} is ${d.MaleWtKg}`);
