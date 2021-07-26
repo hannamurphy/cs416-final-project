@@ -10,23 +10,18 @@
     p.wg { position: absolute; left: 150px; top: 150px; }
     p.slide { position: absolute; left: 5px; top: 100px; }
     select { position: absolute; left: 150px; top: 190px; }
+    tooltip {
+        color: rgb(37, 194, 37);
+        font-family: Arial, Helvetica, sans-serif;
+        background: black;
+        padding: 10px;
+        border: 3px solid white;
+        box-shadow: 0 0px 10px black;
+    }
     /*div.wg { position: absolute; left: 150px; top: 175px; }*/
     div.slide { position: absolute; left: 5px; top: 135px; }
 </style>
-<select id="selectButton">
-<!--    <option>All working groups</option>-->
-</select>
-<!--<div class="wg">-->
-<!--    <button type="button">All</button>-->
-<!--    <button type="button">Herding</button>-->
-<!--    <button type="button">Hound</button>-->
-<!--    <button type="button">Non-Sporting</button>-->
-<!--    <button type="button">Southern</button>-->
-<!--    <button type="button">Sporting</button>-->
-<!--    <button type="button">Terrier</button>-->
-<!--    <button type="button">Toy</button>-->
-<!--    <button type="button">Working</button>-->
-<!--</div>-->
+<select id="selectButton"></select>
 
 <div class="slide">
     <button type="button">1</button>
@@ -96,9 +91,18 @@ d3.select('svg')
     .attr('width', w)
     .attr('height',function(d,i) {return h(d.MaleWtKg);})
     .append('title')
-    .text((d) => `Average male weight in kg for ${d.BreedName} is ${d.MaleWtKg}`);
-    // .on('mouseover', tip.show)
-    // .on('mouseout', tip.hide)
+    .text(d => d.MaleWtKg)
+        .on("mouseover", d => {tooltip.text(d.BreedName + " : " + (d.MaleWtKg).toFixed(2)); return tooltip.style("visibility", "visible")})
+        .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+        .on("mouseout", () => tooltip.style("visibility", "hidden"))
+
+var tooltip = d3.select("body")
+    .append("div")
+        .attr("class", "tooltip")
+        .style("position", "absolute")
+        .style("z-index", 10)
+        .style("visibility", "hidden")
+        .text("Simple text");
 
 d3.select('svg')
     .append('g')
