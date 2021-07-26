@@ -54,29 +54,13 @@ d3.select('select')
     .property("selected", function(d){ return d === ''; }); //set default working group to '' (all working groups)
 
 //tooltip
-// var tooltip = d3.select('svg')
-//     .append('div')
-//     .style('opacity', 0)
-//     .attr('class', 'tooltip')
-//     .style('background-color', 'white')
-//     .style('border', 'solid')
-//     .style('border-width', '1px')
-//     .style('border-radius', '5px')
-//     .style('padding', '10px')
-// var mouseover = function(d) {
-//     tooltip.style("opacity", 1)
-//   }
-// var mousemove = function(d,i) {
-//     tooltip
-//       .html("this is a tooltip")
-//       .style("left", (d3.mouse(this)[0]+90) + "px")
-//       .style("top", (d3.mouse(this)[1]+90) + "px")
-//   }
-// var mouseleave = function(d) {
-//     tooltip.transition()
-//       .duration(200)
-//       .style("opacity", 0)
-//   }
+var tooltip = d3.select("body")
+    .append("div")
+        .attr("class", "tooltip")
+        .style("position", "absolute")
+        .style("z-index", 10)
+        .style("visibility", "hidden")
+        .text("Simple text");
 
 
 d3.select('svg')
@@ -91,18 +75,10 @@ d3.select('svg')
     .attr('width', w)
     .attr('height',function(d,i) {return h(d.MaleWtKg);})
     .append('title')
-    .text(d => "Male " + d.BreedName + "Average Weight (kg): " + d.MaleWtKg)
-        .on("mouseover", d => {tooltip.text(d.BreedName + " : " + (d.MaleWtKg).toFixed(2)); return tooltip.style("visibility", "visible")})
+    .text(d => "Male " + d.BreedName + " Average Weight (kg): " + d.MaleWtKg)
+        .on("mouseover", d => {return tooltip.style("visibility", "visible")})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
-        .on("mouseout", () => tooltip.style("visibility", "hidden"))
-
-var tooltip = d3.select("body")
-    .append("div")
-        .attr("class", "tooltip")
-        .style("position", "absolute")
-        .style("z-index", 10)
-        .style("visibility", "hidden")
-        .text("Simple text");
+        .on("mouseout", () => tooltip.style("visibility", "hidden"));
 
 d3.select('svg')
     .append('g')
