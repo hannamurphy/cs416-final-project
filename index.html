@@ -10,12 +10,13 @@
     p.wg { position: absolute; left: 150px; top: 150px; }
     p.slide { position: absolute; left: 5px; top: 100px; }
     select { position: absolute; left: 150px; top: 190px; }
-    div { position: absolute; left: 5px; top: 135px; }
+    p.wg { position: absolute; left: 150px; top: 150px; }
+    div.slide { position: absolute; left: 5px; top: 135px; }
 </style>
 <!--<select id="selectButton">-->
 <!--    <option>All working groups</option>-->
 <!--</select>-->
-<div id="wg">
+<div class="wg">
     <button type="button">All</button>
     <button type="button">Herding</button>
     <button type="button">Hound</button>
@@ -27,7 +28,7 @@
     <button type="button">Working</button>
 </div>
 
-<div>
+<div class="slide">
     <button type="button">1</button>
     <button type="button">2</button>
     <button type="button">3</button>
@@ -48,8 +49,6 @@ for (var i = 0; i < data.length; i++) {
 }
 
 // working group drop down
-    d3.select('#wg')
-    .attr('transform','translate(150,150)')
 // d3.select('select')
 //     .selectAll('groups')
 //     .data(d3.map(data, function(d){if (d.Group1!='') return d.Group1;}).keys())
