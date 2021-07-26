@@ -82,6 +82,8 @@ d3.select('svg')
     .attr('y',function(d) {return y(d.MaleWtKg);})
     .attr('width', w)
     .attr('height',function(d) {return h(d.MaleWtKg);})
+    .append('title')
+    .text((d) => `Average male weight in kg for ${d.BreedName} is ${d.MaleWtKg}`);
     // .on('mouseover', tip.show)
     // .on('mouseout', tip.hide)
 
@@ -92,7 +94,7 @@ d3.select('svg')
 d3.select('svg')
     .append('g')
     .attr("class", "axis axis--x")
-    .attr('transform','translate(350,600)')
+    .attr('transform','translate(350,575)')
     .call(d3.axisBottom(x));
 
 }
