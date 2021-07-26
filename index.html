@@ -38,8 +38,6 @@
 <script>
 async function init() {
 data = await d3.csv("pet_characteristics.csv");
-// var data2 = [4,8,15,16,23,42];
-// var x = d3.scaleOrdinal(data.map(function(d) { return d.BreedName; }),[0, 350]);
 var x = d3.scaleBand().rangeRound([0, 5000]).padding(5).domain(data.map(function(d) { return d.BreedName; }))
 var y = d3.scaleLinear().range([500,0]).domain([0, d3.max(data, function(d) { return d.MaleWtKg; })]);
 var h = d3.scaleLinear().domain([0,1500]).range([0,500]);
@@ -50,12 +48,12 @@ for (var i = 0; i < data.length; i++) {
 }
 
 // working group drop down
-d3.select('select')
-    .selectAll('groups')
-    .data(d3.map(data, function(d){if (d.Group1!='') return d.Group1;}).keys())
-    .enter()
-    .append('option')
-    .text(function (d) { return d; })
+// d3.select('select')
+//     .selectAll('groups')
+//     .data(d3.map(data, function(d){if (d.Group1!='') return d.Group1;}).keys())
+//     .enter()
+//     .append('option')
+//     .text(function (d) { return d; })
 
 //tooltip
 // var tooltip = d3.select('svg')
