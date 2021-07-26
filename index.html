@@ -15,7 +15,7 @@
 <!--<select id="selectButton">-->
 <!--    <option>All working groups</option>-->
 <!--</select>-->
-<div>
+<div id="wg">
     <button type="button">All</button>
     <button type="button">Herding</button>
     <button type="button">Hound</button>
@@ -48,6 +48,8 @@ for (var i = 0; i < data.length; i++) {
 }
 
 // working group drop down
+    d3.select('#wg')
+    .attr('transform','translate(150,150)')
 // d3.select('select')
 //     .selectAll('groups')
 //     .data(d3.map(data, function(d){if (d.Group1!='') return d.Group1;}).keys())
