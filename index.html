@@ -96,7 +96,8 @@ d3.select('svg')
     .attr('transform','translate(350,575)')
     .call(d3.axisBottom(x))
     .selectAll('text')
-    .attr('transform','rotate(90)');
+    .attr('transform','rotate(90)')
+    .style("text-anchor", "start");
 
 }
 init()
