@@ -10,23 +10,23 @@
     p.wg { position: absolute; left: 150px; top: 150px; }
     p.slide { position: absolute; left: 5px; top: 100px; }
     select { position: absolute; left: 150px; top: 190px; }
-    div.wg { position: absolute; left: 150px; top: 175px; }
+    /*div.wg { position: absolute; left: 150px; top: 175px; }*/
     div.slide { position: absolute; left: 5px; top: 135px; }
 </style>
-<!--<select id="selectButton">-->
-<!--    <option>All working groups</option>-->
-<!--</select>-->
-<div class="wg">
-    <button type="button">All</button>
-    <button type="button">Herding</button>
-    <button type="button">Hound</button>
-    <button type="button">Non-Sporting</button>
-    <button type="button">Southern</button>
-    <button type="button">Sporting</button>
-    <button type="button">Terrier</button>
-    <button type="button">Toy</button>
-    <button type="button">Working</button>
-</div>
+<select id="selectButton">
+    <option>All working groups</option>
+</select>
+<!--<div class="wg">-->
+<!--    <button type="button">All</button>-->
+<!--    <button type="button">Herding</button>-->
+<!--    <button type="button">Hound</button>-->
+<!--    <button type="button">Non-Sporting</button>-->
+<!--    <button type="button">Southern</button>-->
+<!--    <button type="button">Sporting</button>-->
+<!--    <button type="button">Terrier</button>-->
+<!--    <button type="button">Toy</button>-->
+<!--    <button type="button">Working</button>-->
+<!--</div>-->
 
 <div class="slide">
     <button type="button">1</button>
@@ -49,12 +49,12 @@ for (var i = 0; i < data.length; i++) {
 }
 
 // working group drop down
-// d3.select('select')
-//     .selectAll('groups')
-//     .data(d3.map(data, function(d){if (d.Group1!='') return d.Group1;}).keys())
-//     .enter()
-//     .append('option')
-//     .text(function (d) { return d; })
+d3.select('select')
+    .selectAll('groups')
+    .data(d3.map(data, function(d){if (d.Group1!='') return d.Group1;}).keys())
+    .enter()
+    .append('option')
+    .text(function (d) { return d; })
 
 //tooltip
 // var tooltip = d3.select('svg')
