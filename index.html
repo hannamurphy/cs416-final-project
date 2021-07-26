@@ -43,10 +43,10 @@ var y = d3.scaleLinear().range([500,0]).domain([0, 200]);
 var h = d3.scaleLinear().domain([0, 200]).range([0,500]);
 var w = x.bandwidth();
 
-for (var i = 0; i < data.length; i++) {
-    console.log(data[i].BreedName)
-    console.log(data[i].PopularityUS2017);
-}
+// for (var i = 0; i < data.length; i++) {
+//     console.log(data[i].BreedName)
+//     console.log(data[i].PopularityUS2017);
+// }
 
 // stats drop down
 var stats = ['MaleWtKg','Intelligence','PopularityUS2017']
@@ -59,7 +59,8 @@ d3.select('select')
     .text(function (d) { return d; })
     .property("selected", function(d){ return d === 'PopularityUS2017'; }); //set default stat to popularity
 d3.select("#stats").on("change", function() {
-  update(this.value);
+  update(this.value)
+  console.log(this.value);
 });
 function update(value) {
   var updt = svg.selectAll("rect")
