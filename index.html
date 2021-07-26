@@ -28,7 +28,7 @@ async function init() {
 data = await d3.csv("pet_characteristics.csv");
 // var data2 = [4,8,15,16,23,42];
 // var x = d3.scaleOrdinal(data.map(function(d) { return d.BreedName; }),[0, 350]);
-var x = d3.scaleBand().rangeRound([0, 1500]).padding(1.5).domain(data.map(function(d) { return d.BreedName; }))
+var x = d3.scaleBand().rangeRound([0, 2000]).padding(5).domain(data.map(function(d) { return d.BreedName; }))
 var y = d3.scaleLinear().range([500,0]).domain([0, d3.max(data, function(d) { return d.MaleWtKg; })]);
 var h = d3.scaleLinear().domain([0,1500]).range([0,500]);
 var w = x.bandwidth();
@@ -100,7 +100,7 @@ d3.select('svg')
     .attr("x", 9)
     .attr("dy", ".35em")
     .attr('transform','rotate(90)')
-    // .style("text-anchor", "start");
+    .style("text-anchor", "start");
 
 }
 init()
