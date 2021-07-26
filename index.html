@@ -69,8 +69,8 @@ function applyFilter(value) {
       .data(data)
       .transition().duration(1000)
       .attr("x", function(d) { return x(d.BreedName); })
-      .attr('y',function(d) {return y(d.MaleWtKg);})
-      .attr('height',function(d,i) {return h(d.MaleWtKg);});
+      .attr('y',function(d) {return y(d.PopularityUS2017);})
+      .attr('height',function(d,i) {return h(d.PopularityUS2017);});
 }
 
 //tooltip
