@@ -40,12 +40,12 @@ async function init() {
 data = await d3.csv("pet_characteristics.csv");
 var x = d3.scaleBand().rangeRound([0, 5000]).padding(.1).domain(data.map(function(d) { return d.BreedName; }))
 var y = d3.scaleLinear().range([500,0]).domain([0, d3.max(data, function(d) { return d.PopularityUS2017; })]);
-var h = d3.scaleLinear().domain([0, d3.max(data, function(d) { return d.PopularityUS2017; })]).range([0,500]);
+var h = d3.scaleLinear().domain([0, d3.max(data, function(d) { return d.PopularityUS2017; })]).range([0,5000]);
 var w = x.bandwidth();
 
 for (var i = 0; i < data.length; i++) {
     console.log(data[i].BreedName)
-    console.log(data[i].MaleWtKg);
+    console.log(data[i].PopularityUS2017);
 }
 
 // stats drop down
