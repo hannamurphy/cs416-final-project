@@ -14,14 +14,14 @@
 </style>
 <select id="selectButton">
     <option>All working groups</option>
-    <option>Herding</option>
-    <option>Hound</option>
-    <option>Non-Sporting</option>
-    <option>Southern</option>
-    <option>Sporting</option>
-    <option>Terrier</option>
-    <option>Toy</option>
-    <option>Working</option>
+<!--    <option>Herding</option>-->
+<!--    <option>Hound</option>-->
+<!--    <option>Non-Sporting</option>-->
+<!--    <option>Southern</option>-->
+<!--    <option>Sporting</option>-->
+<!--    <option>Terrier</option>-->
+<!--    <option>Toy</option>-->
+<!--    <option>Working</option>-->
 </select>
 <div>
     <button type="button">1</button>
@@ -48,7 +48,7 @@ for (var i = 0; i < data.length; i++) {
 // working group drop down
 d3.select('select')
     .selectAll('groups')
-    .data(d3.map(data, function(d){return d.Group1;}).keys())
+    .data(d3.map(data, function(d){if (d.Group1!='') return d.Group1;}).keys())
     .enter()
     .append('option')
     .text(function (d) { return d; })
