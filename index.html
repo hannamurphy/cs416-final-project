@@ -22,16 +22,16 @@
     <button type="button">4</button>
 </div>
 <body>
-<svg width=1500 height=1500 ></svg>
+<svg width=3000 height=1500 ></svg>
 <script>
 async function init() {
 data = await d3.csv("pet_characteristics.csv");
 // var data2 = [4,8,15,16,23,42];
 // var x = d3.scaleOrdinal(data.map(function(d) { return d.BreedName; }),[0, 350]);
 var x = d3.scaleBand().rangeRound([0, 500]).padding(0.1).domain(data.map(function(d) { return d.BreedName; }))
-var y = d3.scaleLinear().domain([0,42]).range([200,0]);
+var y = d3.scaleLinear().domain([0,42]).range([200,0]).domain([0, d3.max(data, function(d) { return d.frequency; })]);
 var h = d3.scaleLinear().domain([0,42]).range([0,200]);
-// var w = x.bandwidth();
+var w = x.bandwidth();
 
 for (var i = 0; i < data.length; i++) {
     console.log(data[i].BreedName);
@@ -80,7 +80,7 @@ d3.select('svg')
     .append('rect')
     .attr("x", function(d) { return x(d.BreedName); })
     .attr('y',function(d) {return y(d.MaleWtKg);})
-    // .attr('width', w)
+    .attr('width', w)
     .attr('height',function(d) {return h(d.MaleWtKg);})
     // .on("mouseover",mouseover)
     // .on("mousemove",mousemove)
