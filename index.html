@@ -33,8 +33,10 @@ var y = d3.scaleLinear().domain([0,42]).range([200,0]);
 var h = d3.scaleLinear().domain([0,42]).range([0,200]);
 var w = x.bandwidth()
 
-console.log(data)
-console.log(data2)
+for (var i = 0; i < data.length; i++) {
+    console.log(data[i].a);
+    console.log(data[i].b);
+}
 
 // working group drop down
 d3.select('select')
