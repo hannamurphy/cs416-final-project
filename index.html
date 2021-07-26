@@ -88,7 +88,7 @@ var tooltip = d3.select("body")
 
 d3.select('svg')
     .append('g')
-    .attr('transform','translate(350,75)')
+    .attr('transform','translate(150,75)')
     .selectAll('rect')
     .data(data)
     .enter()
@@ -98,7 +98,11 @@ d3.select('svg')
     .attr('width', w)
     .attr('height',function(d,i) {return h(d.PopularityUS2017);})
     .append('title')
-    .text(d => d.BreedName + " Average Puppy Price: " + d.AverageBabyPrice + "\nWorking Group: " + d.Group1)
+    .text(d => "Average Puppy Price: " + d.AverageBabyPrice +
+                "\nWorking Group: " + d.Group1 +
+                "\nAverage Popularity: " + d.PopularityUS2017 +
+                "\nAverage Intelligence: " + d.Intelligence +
+                "\nAverage Male Weight: " + d.MaleWtKg)
         .on("mouseover", d => {tooltip.text(d.BreedName + " Average Puppy Price: " + d.AverageBabyPrice + "\nWorking Group: " + d.Group1); return tooltip.style("visibility", "visible")})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", () => tooltip.style("visibility", "hidden"));
