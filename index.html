@@ -66,9 +66,7 @@ function update(value) {
   console.log(value);
   d3.select('svg').selectAll("rect").remove()
 
-    for (var i = 0; i < data.length; i++) {
-        console.log(data[i].value);
-    }
+  console.log(function(d) { return d.BreedName; });
 
   // d3.select('svg').selectAll("rect")
   //   .data(data)
