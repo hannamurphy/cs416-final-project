@@ -153,8 +153,6 @@ d3.select('svg')
     .attr('y',function(d) {return y(d.PopularityUS2017);})
     .attr('width', w)
     .attr('height',function(d,i) {return h(d.PopularityUS2017);})
-    .append('text')
-    .text(function(d) { return d.PopularityUS2017; })
     .append('title')
     .text(d => "Average Puppy Price: " + d.AverageBabyPrice +
                 "\nWorking Group: " + d.Group1 +
@@ -184,6 +182,17 @@ d3.select('svg')
     .append('text')
     .attr('transform','translate(400,75)')
     .text("All Working Groups");
+
+d3.select('svg')
+    .selectAll('text')
+    .data(data)
+    .enter()
+    .append('text')
+    .attr('class','label')
+    .attr("x", (function(d) { return x(d.BreedName); }  ))
+    .attr("y", function(d) { return y(d.PopularityUS2017); })
+    .attr("dy", ".75em")
+    .text(function(d) { return d.PopularityUS2017; });
 
 
 
