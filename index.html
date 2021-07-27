@@ -192,13 +192,13 @@ d3.selectAll('.text')
 	  .text(function(d) { return d.value; });
 
 
-  svg.selectAll("text")
+  svg.selectAll("#label")
      .data(data)
      .enter()
      .append("text")
      .text(function(d) {return d.value; })
   .attr("text-anchor", "middle")
-  .attr("fill", "white")
+  .attr("fill", "black")
   .attr("x", function(d, i) { return i * (width / data.length);})
   .attr("y", function(d) { return height - (d * 4); });
 
