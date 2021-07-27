@@ -41,7 +41,8 @@ var bars = d3.select('svg').selectAll('rect');
 //slide links
 d3.select("#herd")
     .html('Herding')
-    .attr("xlink:href", "https://hannamurphy.github.io/cs416-final-project/herding.html");
+    .attr("xlink:href", "https://hannamurphy.github.io/cs416-final-project/herding.html")
+    .attr("click", "location.href='https://hannamurphy.github.io/cs416-final-project/herding.html'");
 
 //tooltip
 var tooltip = d3.select("body")
