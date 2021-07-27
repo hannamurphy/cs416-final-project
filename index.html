@@ -153,16 +153,25 @@ d3.select('svg')
     .attr('y',function(d) {return y(d.PopularityUS2017);})
     .attr('width', w)
     .attr('height',function(d,i) {return h(d.PopularityUS2017);})
+    .append("text")
+        .text(function(d) {
+            return data[d];
+        })
+        .attr("x", function(d){
+            return x(d.BreedName) + x.bandwidth()/2;
+        })
+        .attr("y", function(d){
+            return y(data[d.PopularityUS2017]) - 5;
+        })
+        .attr("fill" , "black")
+        .attr("text-anchor", "middle")
     .append('title')
-    .text(function(d){
-         return d.PopularityUS2017;
-    })
-    .text(d => "Average Puppy Price: " + d.AverageBabyPrice +
-                "\nWorking Group: " + d.Group1 +
-                "\nPopularity: " + d.PopularityUS2017 )
-        .on("mouseover", d => {tooltip.text(d.BreedName + " Average Puppy Price: " + d.AverageBabyPrice + "\nWorking Group: " + d.Group1); return tooltip.style("visibility", "visible")})
-        .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
-        .on("mouseout", () => tooltip.style("visibility", "hidden"));
+        .text(d => "Average Puppy Price: " + d.AverageBabyPrice +
+                    "\nWorking Group: " + d.Group1 +
+                    "\nPopularity: " + d.PopularityUS2017 )
+            .on("mouseover", d => {tooltip.text(d.BreedName + " Average Puppy Price: " + d.AverageBabyPrice + "\nWorking Group: " + d.Group1); return tooltip.style("visibility", "visible")})
+            .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+            .on("mouseout", () => tooltip.style("visibility", "hidden"));
 
 d3.select('svg')
     .append('g')
