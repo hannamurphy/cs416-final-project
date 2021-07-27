@@ -16,7 +16,7 @@
 
 <div class="slide">
     <button type="button" id="all">All Working Groups</button>
-    <button type="button" id="herd">Herding</button>
+    <a href="herding.html"><button type="button" id="herd">Herding</button></a>
     <button type="button">Hound</button>
     <button type="button">Non Sporting</button>
     <button type="button">Southern</button>
@@ -39,10 +39,10 @@ var svg = d3.select('svg');
 var bars = d3.select('svg').selectAll('rect');
 
 //slide links
-d3.select("#herd")
-    .html('Herding')
-    .append('a')
-    .attr("href", "https://hannamurphy.github.io/cs416-final-project/herding.html")
+// d3.select("#herd")
+//     .html('Herding')
+//     .append('a')
+//     .attr("href", "https://hannamurphy.github.io/cs416-final-project/herding.html")
 
 //tooltip
 var tooltip = d3.select("body")
