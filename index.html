@@ -138,16 +138,16 @@ function popularity(value) {
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", () => tooltip.style("visibility", "hidden"));
 
-  d3.select('svg')
-    .append('text')
-    .attr('transform','translate(5,225)')
-    .text("Most Popular Breeds" +
-          "\nBlack Labrador Retriever" +
-          "\nChocolate Labrador Retriever" +
-          "\nLabrador Retriever" +
-          "\nYellow Labrador Retriever" +
-          "\nGerman Shepard Dog"
-    );
+  // d3.select('svg')
+  //   .append('text')
+  //   .attr('transform','translate(5,225)')
+  //   .text("Most Popular Breeds" +
+  //         "\nBlack Labrador Retriever" +
+  //         "\nChocolate Labrador Retriever" +
+  //         "\nLabrador Retriever" +
+  //         "\nYellow Labrador Retriever" +
+  //         "\nGerman Shepard Dog"
+  //   );
 };
 
 
