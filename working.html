@@ -83,8 +83,7 @@ function weight(value) {
     .attr('height',function(d,i) {return h(d.MaleWtKg);})
     .append('title')
     .text(d => "Average Puppy Price: " + d.AverageBabyPrice +
-                "\nWorking Group: " + d.Group1 +
-                "\nAverage Male Weight: " + d.MaleWtKg)
+                "\nWorking Group: " + d.Group1 )
         .on("mouseover", d => {tooltip.text(d.BreedName + " Average Puppy Price: " + d.AverageBabyPrice + "\nWorking Group: " + d.Group1); return tooltip.style("visibility", "visible")})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", () => tooltip.style("visibility", "hidden"));
@@ -105,8 +104,7 @@ function intelligence(value) {
     .attr('height',function(d,i) {return h(d.Intelligence);})
     .append('title')
     .text(d => "Average Puppy Price: " + d.AverageBabyPrice +
-                "\nWorking Group: " + d.Group1 +
-                "\nAverage Intelligence: " + d.Intelligence)
+                "\nWorking Group: " + d.Group1 )
         .on("mouseover", d => {tooltip.text(d.BreedName + " Average Puppy Price: " + d.AverageBabyPrice + "\nWorking Group: " + d.Group1); return tooltip.style("visibility", "visible")})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", () => tooltip.style("visibility", "hidden"));
@@ -127,8 +125,7 @@ function popularity(value) {
     .attr('height',function(d,i) {return h(d.PopularityUS2017);})
     .append('title')
     .text(d => "Average Puppy Price: " + d.AverageBabyPrice +
-                "\nWorking Group: " + d.Group1 +
-                "\nPopularity: " + d.PopularityUS2017)
+                "\nWorking Group: " + d.Group1 )
         .on("mouseover", d => {tooltip.text(d.BreedName + " Average Puppy Price: " + d.AverageBabyPrice + "\nWorking Group: " + d.Group1); return tooltip.style("visibility", "visible")})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", () => tooltip.style("visibility", "hidden"));
@@ -149,8 +146,7 @@ svg
     .attr('height',function(d,i) {return h(d.PopularityUS2017);})
     .append('title')
         .text(d => "Average Puppy Price: " + d.AverageBabyPrice +
-                    "\nWorking Group: " + d.Group1 +
-                    "\nPopularity: " + d.PopularityUS2017 )
+                    "\nWorking Group: " + d.Group1 )
             .on("mouseover", d => {tooltip.text(d.BreedName + " Average Puppy Price: " + d.AverageBabyPrice + "\nWorking Group: " + d.Group1); return tooltip.style("visibility", "visible")})
             .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
             .on("mouseout", () => tooltip.style("visibility", "hidden"));
