@@ -167,6 +167,18 @@ svg
 svg
     .append('g')
     .attr('transform','translate(175,75)')
+    .selectAll('rect')
+    .data(data)
+    .enter()
+    .append('text')
+    .attr('x', function(d) { return x(d.BreedName); })
+    .attr('y', function(d,i) { return h(d.PopularUS2017); })
+    .attr('dy', '.35em')
+    .text(function(d) { return d.PopularityUS2017})
+
+svg
+    .append('g')
+    .attr('transform','translate(175,75)')
     .call(d3.axisLeft(y));
 svg
     .append('g')
@@ -184,11 +196,6 @@ svg
     .attr('transform','translate(400,75)')
     .text("All Working Groups");
 
-svg
-    .append('text')
-    .attr('transform','translate(5,225)')
-    .text("Most Popular Breeds")
-    .text("Black Labrador Retriever");
 
 // d3.selectAll('.text')
 //     .data(data)
