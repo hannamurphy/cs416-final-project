@@ -182,8 +182,23 @@ d3.select('svg')
     .attr('transform','translate(400,75)')
     .text("All Working Groups");
 
-
-
+d3.select('svg')
+    .selectAll(".bartext")
+    .data(data)
+    .enter()
+    .append("text")
+    .attr("class", "bartext")
+    .attr("text-anchor", "middle")
+    .attr("fill", "white")
+    .attr("x", function(d,i) {
+        return x(i)+x.rangeBand()/2;
+    })
+    .attr("y", function(d,i) {
+        return height-y(d)+yTextPadding;
+    })
+    .text(function(d){
+         return d;
+    });
 
 }
 init()
