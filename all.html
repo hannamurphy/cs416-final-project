@@ -24,7 +24,6 @@
     <a href="toy.html"><button type="button">Toy</button></a>
     <a href="working.html"><button type="button">Working</button></a>
     <a href="all.html"><button type="button" id="all">All Working Groups</button></a>
-
 </div>
 <body>
 <svg width=10000 height=1500 ></svg>
@@ -39,11 +38,6 @@ var w = x.bandwidth();
 var svg = d3.select('svg');
 var bars = d3.select('svg').selectAll('rect');
 
-//slide links
-// d3.select("#herd")
-//     .html('Herding')
-//     .append('a')
-//     .attr("href", "https://hannamurphy.github.io/cs416-final-project/herding.html")
 
 //tooltip
 var tooltip = d3.select("body")
@@ -77,6 +71,8 @@ d3.select("#stats")
 function weight(value) {
   console.log(value);
   d3.select('svg').selectAll("rect").remove()
+  d3.select('svg').selectAll('#barstat').remove();
+
   bars
     .data(data)
     .enter()
@@ -88,16 +84,32 @@ function weight(value) {
     .attr('height',function(d,i) {return h(d.MaleWtKg);})
     .append('title')
     .text(d => "Average Puppy Price: " + d.AverageBabyPrice +
-                "\nWorking Group: " + d.Group1 +
-                "\nAverage Male Weight: " + d.MaleWtKg)
+                "\nWorking Group: " + d.Group1 )
         .on("mouseover", d => {tooltip.text(d.BreedName + " Average Puppy Price: " + d.AverageBabyPrice + "\nWorking Group: " + d.Group1); return tooltip.style("visibility", "visible")})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", () => tooltip.style("visibility", "hidden"));
+
+    // stat on top of bar
+    svg
+        .append('g')
+        .selectAll('rect')
+        .data(data)
+        .enter()
+        .append('text')
+        .text(function(d) { return d.MaleWtKg})
+        .attr('id', 'barstat')
+        .attr('transform','translate(185,45)')
+        .attr("text-anchor", "middle")
+        .attr("fill", "black")
+        .attr('x', function(d) { return x(d.BreedName); })
+        .attr('y', function(d) { return y(d.MaleWtKg); })
+        .attr('dy', '1.5em')
 };
 
 function intelligence(value) {
   console.log(value);
   d3.select('svg').selectAll("rect").remove()
+  d3.select('svg').selectAll('#barstat').remove();
 
   bars
     .data(data)
@@ -110,16 +122,33 @@ function intelligence(value) {
     .attr('height',function(d,i) {return h(d.Intelligence);})
     .append('title')
     .text(d => "Average Puppy Price: " + d.AverageBabyPrice +
-                "\nWorking Group: " + d.Group1 +
-                "\nAverage Intelligence: " + d.Intelligence)
+                "\nWorking Group: " + d.Group1 )
         .on("mouseover", d => {tooltip.text(d.BreedName + " Average Puppy Price: " + d.AverageBabyPrice + "\nWorking Group: " + d.Group1); return tooltip.style("visibility", "visible")})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", () => tooltip.style("visibility", "hidden"));
+
+  // stat on top of bar
+    svg
+        .append('g')
+        .selectAll('rect')
+        .data(data)
+        .enter()
+        .append('text')
+        .text(function(d) { return d.Intelligence})
+        .attr('id', 'barstat')
+        .attr('transform','translate(185,45)')
+        .attr("text-anchor", "middle")
+        .attr("fill", "black")
+        .attr('x', function(d) { return x(d.BreedName); })
+        .attr('y', function(d) { return y(d.Intelligence); })
+        .attr('dy', '1.5em')
+
 };
 
 function popularity(value) {
   console.log(value);
-  d3.select('svg').selectAll("rect").remove()
+  d3.select('svg').selectAll("rect").remove();
+  d3.select('svg').selectAll('#barstat').remove();
 
   bars
     .data(data)
@@ -132,11 +161,26 @@ function popularity(value) {
     .attr('height',function(d,i) {return h(d.PopularityUS2017);})
     .append('title')
     .text(d => "Average Puppy Price: " + d.AverageBabyPrice +
-                "\nWorking Group: " + d.Group1 +
-                "\nPopularity: " + d.PopularityUS2017)
+                "\nWorking Group: " + d.Group1 )
         .on("mouseover", d => {tooltip.text(d.BreedName + " Average Puppy Price: " + d.AverageBabyPrice + "\nWorking Group: " + d.Group1); return tooltip.style("visibility", "visible")})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", () => tooltip.style("visibility", "hidden"));
+
+  // stat on top of bar
+    svg
+        .append('g')
+        .selectAll('rect')
+        .data(data)
+        .enter()
+        .append('text')
+        .text(function(d) { return d.PopularityUS2017})
+        .attr('id', 'barstat')
+        .attr('transform','translate(185,45)')
+        .attr("text-anchor", "middle")
+        .attr("fill", "black")
+        .attr('x', function(d) { return x(d.BreedName); })
+        .attr('y', function(d) { return y(d.PopularityUS2017); })
+        .attr('dy', '1.5em')
 
 };
 
@@ -160,6 +204,7 @@ svg
             .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
             .on("mouseout", () => tooltip.style("visibility", "hidden"));
 
+// stat on top of bar
 svg
     .append('g')
     .selectAll('rect')
@@ -167,6 +212,7 @@ svg
     .enter()
     .append('text')
     .text(function(d) { return d.PopularityUS2017})
+    .attr('id', 'barstat')
     .attr('transform','translate(185,45)')
     .attr("text-anchor", "middle")
     .attr("fill", "black")
