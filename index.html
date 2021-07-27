@@ -15,7 +15,7 @@
 <select id="stats"></select>
 
 <div class="slide">
-    <button type="button" onclick="herding.html">All Working Groups</button>
+    <button type="button">All Working Groups</button>
     <button type="button">Herding</button>
     <button type="button">Hound</button>
     <button type="button">Non Sporting</button>
@@ -38,6 +38,11 @@ var w = x.bandwidth();
 var svg = d3.select('svg');
 var bars = d3.select('svg').selectAll('rect');
 
+//slide links
+d3.select("div")
+  .append("a")
+  .attr("href", "herding.html")
+  .html("herding");
 
 //tooltip
 var tooltip = d3.select("body")
