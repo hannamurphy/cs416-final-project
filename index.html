@@ -189,7 +189,7 @@ d3.select('svg')
     .append("text")
     .attr("class", "bartext")
     .attr("text-anchor", "middle")
-    .attr("fill", "white")
+    .attr("fill", "black")
     .attr("x", function(d,i) {
         return x(i)+x.rangeBand()/2;
     })
@@ -197,7 +197,7 @@ d3.select('svg')
         return height-y(d)+yTextPadding;
     })
     .text(function(d){
-         return d;
+         return d.PopularityUS2017;
     });
 
 }
