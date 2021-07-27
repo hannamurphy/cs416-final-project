@@ -72,7 +72,7 @@ d3.select("#stats")
 function weight(value) {
   console.log(value);
   d3.select('svg').selectAll("rect").remove()
-  d3.select('svg').selectAll("text").remove();
+  d3.select('svg').selectAll('#barstat').remove();
 
   bars
     .data(data)
@@ -109,7 +109,7 @@ function weight(value) {
 function intelligence(value) {
   console.log(value);
   d3.select('svg').selectAll("rect").remove()
-  d3.select('svg').selectAll("text").remove();
+  d3.select('svg').selectAll('#barstat').remove();
 
   bars
     .data(data)
@@ -147,7 +147,7 @@ function intelligence(value) {
 function popularity(value) {
   console.log(value);
   d3.select('svg').selectAll("rect").remove();
-  d3.select('svg').selectAll("text").remove();
+  d3.select('svg').selectAll('#barstat').remove();
 
   bars
     .data(data)
@@ -210,6 +210,7 @@ svg
     .enter()
     .append('text')
     .text(function(d) { return d.PopularityUS2017})
+    .attr('id', 'barstat')
     .attr('transform','translate(185,45)')
     .attr("text-anchor", "middle")
     .attr("fill", "black")
