@@ -164,18 +164,11 @@ d3.select('svg')
     .attr('y',function(d) {return y(d.PopularityUS2017);})
     .attr('width', w)
     .attr('height',function(d,i) {return h(d.PopularityUS2017);})
-    // .append("text")
-    //     .text(function(d) {
-    //         return data[d];
-    //     })
-    //     .attr("x", function(d){
-    //         return x(d.BreedName) + x.bandwidth()/2;
-    //     })
-    //     .attr("y", function(d){
-    //         return y(data[d.PopularityUS2017]) - 5;
-    //     })
-    //     .attr("fill" , "black")
-    //     .attr("text-anchor", "middle")
+    .append('text')
+    .text(function(d) { return d.PopularityUS2017 })
+    .attr("x", function(d,i){ return xScale(i) + xScale.bandwidth() / 2;})
+    .attr("y", function(d){return h - yScale(d) + 14 ;})
+    .attr("text-anchor","middle")
     .append('title')
         .text(d => "Average Puppy Price: " + d.AverageBabyPrice +
                     "\nWorking Group: " + d.Group1 +
