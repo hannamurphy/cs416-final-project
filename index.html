@@ -67,10 +67,10 @@ function update(value) {
   d3.select('svg').selectAll("rect").remove()
 
   d3.select('svg').selectAll("rect")
-    .attr('transform','translate(175,75)')
     .data(data)
     .enter()
     .append("rect")
+    .attr('transform','translate(175,75)')
     .attr("x", function(d) { return x(d.BreedName); })
     .attr('y',function(d) {return y(d.MaleWtKg);})
     .attr("width", w)
