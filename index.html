@@ -171,6 +171,7 @@ svg
     .enter()
     .append('text')
     .text(function(d) { return d.PopularityUS2017})
+    .attr('transform','translate(175,75)')
     .attr("text-anchor", "middle")
     .attr("fill", "black")
     .attr('x', function(d) { return x(d.BreedName); })
