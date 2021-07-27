@@ -66,19 +66,18 @@ function update(value) {
   console.log(value);
   d3.select('svg').selectAll("rect").remove()
 
-  console.log(function(d) { return d.BreedName; });
+  d3.select('svg').selectAll("rect")
+    .data(data)
+    .enter()
+    .append("rect")
+    .attr("x", function(d) { return x(d.BreedName); })
+    .attr('y',function(d) {return y(d.MaleWtKg);})
+    .attr("width", w)
+    .attr('height',function(d,i) {return h(d.value);});
 
-  // d3.select('svg').selectAll("rect")
-  //   .data(data)
-  //   .enter()
-  //   .append("rect")
   //   // .merge(updt)
   //   // .transition()
   //   // .duration(1000)
-  //   .attr("x", function(d) { return x(d.BreedName); })
-  //   .attr('y',function(d) {return y(d.value);})
-  //   .attr("width", w)
-  //   .attr('height',function(d,i) {return h(d.value);});
 
 };
 
