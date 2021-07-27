@@ -64,17 +64,14 @@ d3.select("#stats").on("change", function() {
 });
 function update(value) {
   var updt = d3.select('svg').selectAll("rect")
-    .data(data)
+    .data(data);
 
   updt.enter()
     .append("rect")
     .merge(updt)
     .transition()
     .duration(1000)
-    .attr("x", function(d) { return x(d.BreedName); })
-    .attr('y',function(d) {return y(d.value);})
-    .attr("width", x.bandwidth())
-    .attr('height',function(d,i) {return h(d.value);})
+    .attr('height',function(d,i) {return h(d.value);});
 }
 
 //tooltip
