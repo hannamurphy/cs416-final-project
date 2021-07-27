@@ -72,7 +72,7 @@ function update(value) {
     .transition()
     .duration(1000)
     .attr("x", function(d) { return x(d.BreedName); })
-    .attr('y',function(d) {return y(d.value);})
+    .attr('y',function(d) {return y(d.PopularityUS2017);})
     .attr("width", w)
     .attr('height',function(d,i) {return h(d.value);});
 }
