@@ -31,8 +31,8 @@ async function init() {
 data = await d3.csv("pet_characteristics.csv")
 data = data.filter(function(d){ return d.Group1 == "Herding" });
 var x = d3.scaleBand().rangeRound([0, 1000]).padding(.1).domain(data.map(function(d) { return d.BreedName; }))
-var y = d3.scaleLinear().range([0,500]).domain([200, 0]);
-var h = d3.scaleLinear().domain([0, 200]).range([0,500]);
+var y = d3.scaleLinear().range([500,0]).domain([200, 0]);
+var h = d3.scaleLinear().domain([200, 0]).range([0,500]);
 var w = x.bandwidth();
 
 var svg = d3.select('svg');
