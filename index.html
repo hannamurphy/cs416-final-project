@@ -75,10 +75,16 @@ function update(value) {
     .attr('y',function(d) {return y(d.MaleWtKg);})
     .attr("width", w)
     .attr('height',function(d,i) {return h(d.MaleWtKg);});
+    .append('title')
+    .text(d => "Average Puppy Price: " + d.AverageBabyPrice +
+                "\nWorking Group: " + d.Group1 +
+                "\nPopularity: " + d.PopularityUS2017 +
+                "\nAverage Intelligence: " + d.Intelligence +
+                "\nAverage Male Weight: " + d.MaleWtKg)
+        .on("mouseover", d => {tooltip.text(d.BreedName + " Average Puppy Price: " + d.AverageBabyPrice + "\nWorking Group: " + d.Group1); return tooltip.style("visibility", "visible")})
+        .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+        .on("mouseout", () => tooltip.style("visibility", "hidden"));
 
-  //   // .merge(updt)
-  //   // .transition()
-  //   // .duration(1000)
 
 };
 
@@ -106,7 +112,7 @@ d3.select('svg')
     .append('title')
     .text(d => "Average Puppy Price: " + d.AverageBabyPrice +
                 "\nWorking Group: " + d.Group1 +
-                "\nAverage Popularity: " + d.PopularityUS2017 +
+                "\nPopularity: " + d.PopularityUS2017 +
                 "\nAverage Intelligence: " + d.Intelligence +
                 "\nAverage Male Weight: " + d.MaleWtKg)
         .on("mouseover", d => {tooltip.text(d.BreedName + " Average Puppy Price: " + d.AverageBabyPrice + "\nWorking Group: " + d.Group1); return tooltip.style("visibility", "visible")})
