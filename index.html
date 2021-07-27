@@ -43,6 +43,9 @@ var y = d3.scaleLinear().range([500,0]).domain([0, 200]);
 var h = d3.scaleLinear().domain([0, 200]).range([0,500]);
 var w = x.bandwidth();
 
+var svg = d3.select('svg');
+var bars = d3.select('svg').selectAll('rect');
+
 
 //tooltip
 var tooltip = d3.select("body")
@@ -75,9 +78,9 @@ d3.select("#stats")
 
 function weight(value) {
   console.log(value);
-  d3.select('svg').selectAll("rect").remove()
+  bars.remove()
 
-  d3.select('svg').selectAll("rect")
+  bars
     .data(data)
     .enter()
     .append("rect")
@@ -97,9 +100,9 @@ function weight(value) {
 
 function intelligence(value) {
   console.log(value);
-  d3.select('svg').selectAll("rect").remove()
+  bars.remove()
 
-  d3.select('svg').selectAll("rect")
+  bars
     .data(data)
     .enter()
     .append("rect")
@@ -119,9 +122,9 @@ function intelligence(value) {
 
 function popularity(value) {
   console.log(value);
-  d3.select('svg').selectAll("rect").remove()
+  bars.remove()
 
-  d3.select('svg').selectAll("rect")
+  bars
     .data(data)
     .enter()
     .append("rect")
@@ -143,7 +146,7 @@ function popularity(value) {
 
 
 //create default chart
-d3.select('svg')
+svg
     .append('g')
     .attr('transform','translate(175,75)')
     .selectAll('rect')
@@ -162,11 +165,11 @@ d3.select('svg')
             .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
             .on("mouseout", () => tooltip.style("visibility", "hidden"));
 
-d3.select('svg')
+svg
     .append('g')
     .attr('transform','translate(175,75)')
     .call(d3.axisLeft(y));
-d3.select('svg')
+svg
     .append('g')
     .attr('transform','translate(175,575)')
     .call(d3.axisBottom(x))
@@ -177,7 +180,7 @@ d3.select('svg')
     .attr('transform','rotate(90)')
     .style("text-anchor", "start");
 
-d3.select('svg')
+svg
     .append('text')
     .attr('transform','translate(400,75)')
     .text("All Working Groups");
