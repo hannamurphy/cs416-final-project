@@ -63,14 +63,13 @@ d3.select("#stats").on("change", function() {
   console.log(this.value);
 });
 function update(value) {
-  var updt = d3.select('svg').selectAll("rect")
-    .data(data);
-
-  updt.enter()
+  d3.select('svg').selectAll("rect")
+    .data(data)
+    .enter()
     .append("rect")
-    .merge(updt)
-    .transition()
-    .duration(1000)
+    // .merge(updt)
+    // .transition()
+    // .duration(1000)
     .attr("x", function(d) { return x(d.BreedName); })
     .attr('y',function(d) {return y(d.PopularityUS2017);})
     .attr("width", w)
