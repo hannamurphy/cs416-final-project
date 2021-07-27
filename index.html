@@ -73,8 +73,8 @@ function update(value) {
     .duration(1000)
     .attr("x", function(d) { return x(d.BreedName); })
     .attr('y',function(d) {return y(d.value);})
-      .attr("width", x.bandwidth())
-      .attr("height", function(d) { return height - y(d.value); })
+    .attr("width", x.bandwidth())
+    .attr('height',function(d,i) {return h(d.value);})
 }
 
 //tooltip
