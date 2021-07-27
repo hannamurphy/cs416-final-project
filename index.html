@@ -60,8 +60,10 @@ d3.select('select')
 d3.select("#stats")
     .on("change", function() {
         // if (this.value='MaleWtKg') weight(this.value)
-        if (this.value='Intelligence') { intelligence(this.value)}
-        else {popularity(this.value)}
+        if (this.value === 'Intelligence') {
+            intelligence(this.value)
+        }
+        else { popularity(this.value) }
         ;});
 
 function weight(value) {
