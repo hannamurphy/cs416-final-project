@@ -182,16 +182,26 @@ d3.select('svg')
     .attr('transform','translate(400,75)')
     .text("All Working Groups");
 
+d3.selectAll('.text')
+    .data(data)
+    .enter().append('text')
+    	  .attr("class","label")
+	  .attr("x", (function(d) { return x(d.date); }  ))
+	  .attr("y", function(d) { return y(d.value) - 20; })
+	  .attr("dy", ".75em")
+	  .text(function(d) { return d.value; });
 
-// d3.select('svg')
-//     .append("line")
-//     .attr('x1', x(0))
-//     .attr('x2', x(250))
-//     .attr('y1', y(89))
-//     .attr('y2', y(89))
-//     .attr('stroke', 'black')
-//     .attr('stroke-width',3)
-//     .attr('fill', 'black');
+
+  svg.selectAll("text")
+     .data(data)
+     .enter()
+     .append("text")
+     .text(function(d) {return d.value; })
+  .attr("text-anchor", "middle")
+  .attr("fill", "white")
+  .attr("x", function(d, i) { return i * (width / data.length);})
+  .attr("y", function(d) { return height - (d * 4); });
+
 
 }
 init()
