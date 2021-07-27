@@ -63,7 +63,7 @@ d3.select("#stats").on("change", function() {
   console.log(this.value);
 });
 function update(value) {
-  d3.select('svg').selectAll("rect")
+  d3.select('svg').selectAll("rect").remove()
     .data(data)
     .enter()
     .append("rect")
