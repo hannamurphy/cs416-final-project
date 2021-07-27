@@ -195,11 +195,14 @@ d3.select('svg')
 
 
 d3.select('svg')
-    .append('g')
-    .attr('transform','translate(175,75)')
-    .line()
-    .x(function(d) { return d.BreedName })
-    .y(function(d) { return d.PopularityUS2017})
+    .append("line")
+    .attr('x1', x(0))
+    .attr('x2', x(250))
+    .attr('y1', y(89))
+    .attr('y2', y(89))
+    .attr('stroke', 'black')
+    .attr('stroke-width',3)
+    .attr('fill', 'black');
 
 //
 // d3.select('svg')
