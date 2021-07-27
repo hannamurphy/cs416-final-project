@@ -59,8 +59,10 @@ d3.select('select')
     .property("selected", function(d){ return d === 'PopularityUS2017'; }); //set default stat to popularity
 d3.select("#stats")
     .on("change", function() {
-        // if (this.value='MaleWtKg') weight(this.value)
-        if (this.value === 'Intelligence') {
+        if (this.value === 'MaleWtKg') {
+            weight(this.value)
+        }
+        else if (this.value === 'Intelligence') {
             intelligence(this.value)
         }
         else { popularity(this.value) }
