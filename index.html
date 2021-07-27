@@ -65,12 +65,12 @@ d3.select("#stats").on("change", function() {
 function update(value) {
     console.log(value);
   d3.select('svg').selectAll("rect").remove()
-  d3.select('svg').selectAll("rect")
+  updt = d3.select('svg').selectAll("rect")
     .data(data)
     .enter()
     .append("rect")
-    // .merge(updt)
-    // .transition()
+    .merge(updt)
+    .transition()
     // .duration(1000)
     .attr("x", function(d) { return x(d.BreedName); })
     .attr('y',function(d) {return y(d.value);})
