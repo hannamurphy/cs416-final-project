@@ -138,16 +138,6 @@ function popularity(value) {
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", () => tooltip.style("visibility", "hidden"));
 
-  // d3.select('svg')
-  //   .append('text')
-  //   .attr('transform','translate(5,225)')
-  //   .text("Most Popular Breeds" +
-  //         "\nBlack Labrador Retriever" +
-  //         "\nChocolate Labrador Retriever" +
-  //         "\nLabrador Retriever" +
-  //         "\nYellow Labrador Retriever" +
-  //         "\nGerman Shepard Dog"
-  //   );
 };
 
 
@@ -164,6 +154,14 @@ d3.select('svg')
     .attr('y',function(d) {return y(d.PopularityUS2017);})
     .attr('width', w)
     .attr('height',function(d,i) {return h(d.PopularityUS2017);})
+    .append("line")
+    .attr('x1', x(0))
+    .attr('x2', x(250))
+    .attr('y1', y(89))
+    .attr('y2', y(89))
+    .attr('stroke', 'black')
+    .attr('stroke-width',3)
+    .attr('fill', 'black')
     .append('title')
         .text(d => "Average Puppy Price: " + d.AverageBabyPrice +
                     "\nWorking Group: " + d.Group1 +
@@ -194,34 +192,15 @@ d3.select('svg')
     .text("All Working Groups");
 
 
-d3.select('svg')
-    .append("line")
-    .attr('x1', x(0))
-    .attr('x2', x(250))
-    .attr('y1', y(89))
-    .attr('y2', y(89))
-    .attr('stroke', 'black')
-    .attr('stroke-width',3)
-    .attr('fill', 'black');
-
-//
 // d3.select('svg')
-//     .selectAll(".bartext")
-//     .data(data)
-//     .enter()
-//     .append("text")
-//     .attr("class", "bartext")
-//     .attr("text-anchor", "middle")
-//     .attr("fill", "black")
-//     .attr("x", function(d,i) {
-//         return x(i)+x.rangeBand()/2;
-//     })
-//     .attr("y", function(d,i) {
-//         return height-y(d)+yTextPadding;
-//     })
-//     .text(function(d){
-//          return d.PopularityUS2017;
-//     });
+//     .append("line")
+//     .attr('x1', x(0))
+//     .attr('x2', x(250))
+//     .attr('y1', y(89))
+//     .attr('y2', y(89))
+//     .attr('stroke', 'black')
+//     .attr('stroke-width',3)
+//     .attr('fill', 'black');
 
 }
 init()
