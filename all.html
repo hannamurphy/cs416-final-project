@@ -228,9 +228,10 @@ svg
     .attr('transform','translate(175,575)')
     .call(d3.axisBottom(x))
     .selectAll('text')
+    .attr('id','labels')
     .attr("y", 0)
     .attr("x", 9)
-    // .attr("dy", ".35em")
+    .attr("dy", ".35em")
     .attr('transform','rotate(90)')
     .style("text-anchor", "start");
 
